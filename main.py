@@ -74,17 +74,17 @@ async def main(bot:commands.Bot):
             else:
                 await interaction.response.send_message(content="このアプリは、管理者のみ実行可能です。", ephemeral=True)
     
-    @bot.tree.context_menu(name="埋め込みをメッセージに変換")
-    async def embed_send_message(interaction:discord.Interaction, message:discord.Message):
-        if interaction.user.guild_permissions.administrator:
-            a = ""
-            for i in message.embeds:
-                a = a + i.description
-            await message.channel.send(content=a)
-            await interaction.response.send_message("sended.", ephemeral=True)
-        else:
-            await interaction.response.send_message(content="このアプリは、管理者のみ実行可能です。", ephemeral=True)
-
+        @bot.tree.context_menu(name="埋め込みをメッセージに変換")
+        async def embed_send_message(interaction:discord.Interaction, message:discord.Message):
+            if interaction.user.guild_permissions.administrator:
+                a = ""
+                for i in message.embeds:
+                    a = a + i.description
+                await message.channel.send(content=a)
+                await interaction.response.send_message("sended.", ephemeral=True)
+            else:
+                await interaction.response.send_message(content="このアプリは、管理者のみ実行可能です。", ephemeral=True)
+    
         await bot.start(TOKEN)
     except Exception as e:
         log.error(f"BOTの起動中にエラーが発生しました\n{e}")
