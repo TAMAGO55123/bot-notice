@@ -69,7 +69,7 @@ class PresenceCog(commands.Cog):
             status.set_status(new.id, st)
     @app_commands.command(name="add_bot")
     async def add(self, interaction:discord.Interaction, bot:discord.Member, channel:str):
-        if interaction.user.guild_permissions.administrator:
+        if 1461611000049565777 in [i.id for i in self.bot.get_guild(1461610733585563702).get_member(interaction.user.id).roles]:
             _id = int(channel)
             presence.set_channel(bot.id, Channels(id=_id, name=bot.name))
             await interaction.response.send_message("ok")
