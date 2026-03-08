@@ -14,7 +14,7 @@ class ToolsCog(commands.Cog):
     @app_commands.command(name="cid")
     async def cid(self, interaction:discord.Interaction, channel: discord.TextChannel = None):
         ch = channel if channel else interaction.channel
-        await ch.send(ch.id)
+        await interaction.response.send_message(ch.id)
 
 async def setup(bot):
     await bot.add_cog(ToolsCog(bot))
